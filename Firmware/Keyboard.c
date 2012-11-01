@@ -12,8 +12,8 @@
  Software License Agreement:
 
  The software supplied herewith by Microchip Technology Incorporated
- (the “Company”) for its PIC® Microcontroller is intended and
- supplied to you, the Company’s customer, for use solely and
+ (the "Company" for its PIC?Microcontroller is intended and
+ supplied to you, the Company's customer, for use solely and
  exclusively on Microchip PIC Microcontroller products. The
  software is owned by the Company and/or its supplier, and is
  protected under applicable copyright laws. All rights are reserved.
@@ -22,7 +22,7 @@
  civil liability for the breach of the terms and conditions of this
  license.
 
- THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
+ THIS SOFTWARE IS PROVIDED IN AN "AS IS" CONDITION. NO WARRANTIES,
  WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
  TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
  PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
@@ -50,96 +50,7 @@
 #include "./USB/usb_function_hid.h"
 
 /** CONFIGURATION **************************************************/
-#if defined(PICDEM_FS_USB)      // Configuration bits for PICDEM FS USB Demo Board (based on PIC18F4550)
-        #pragma config PLLDIV   = 5         // (20 MHz crystal on PICDEM FS USB board)
-        #pragma config CPUDIV   = OSC1_PLL2   
-        #pragma config USBDIV   = 2         // Clock source from 96MHz PLL/2
-        #pragma config FOSC     = HSPLL_HS
-        #pragma config FCMEN    = OFF
-        #pragma config IESO     = OFF
-        #pragma config PWRT     = OFF
-        #pragma config BOR      = ON
-        #pragma config BORV     = 3
-        #pragma config VREGEN   = ON      //USB Voltage Regulator
-        #pragma config WDT      = OFF
-        #pragma config WDTPS    = 32768
-        #pragma config MCLRE    = ON
-        #pragma config LPT1OSC  = OFF
-        #pragma config PBADEN   = OFF
-//      #pragma config CCP2MX   = ON
-        #pragma config STVREN   = ON
-        #pragma config LVP      = OFF
-//      #pragma config ICPRT    = OFF       // Dedicated In-Circuit Debug/Programming
-        #pragma config XINST    = OFF       // Extended Instruction Set
-        #pragma config CP0      = OFF
-        #pragma config CP1      = OFF
-//      #pragma config CP2      = OFF
-//      #pragma config CP3      = OFF
-        #pragma config CPB      = OFF
-//      #pragma config CPD      = OFF
-        #pragma config WRT0     = OFF
-        #pragma config WRT1     = OFF
-//      #pragma config WRT2     = OFF
-//      #pragma config WRT3     = OFF
-        #pragma config WRTB     = OFF       // Boot Block Write Protection
-        #pragma config WRTC     = OFF
-//      #pragma config WRTD     = OFF
-        #pragma config EBTR0    = OFF
-        #pragma config EBTR1    = OFF
-//      #pragma config EBTR2    = OFF
-//      #pragma config EBTR3    = OFF
-        #pragma config EBTRB    = OFF
-
-
-#elif defined(PIC18F87J50_PIM)				// Configuration bits for PIC18F87J50 FS USB Plug-In Module board
-        #pragma config XINST    = OFF   	// Extended instruction set
-        #pragma config STVREN   = ON      	// Stack overflow reset
-        #pragma config PLLDIV   = 3         // (12 MHz crystal used on this board)
-        #pragma config WDTEN    = OFF      	// Watch Dog Timer (WDT)
-        #pragma config CP0      = OFF      	// Code protect
-        #pragma config CPUDIV   = OSC1      // OSC1 = divide by 1 mode
-        #pragma config IESO     = OFF      	// Internal External (clock) Switchover
-        #pragma config FCMEN    = OFF      	// Fail Safe Clock Monitor
-        #pragma config FOSC     = HSPLL     // Firmware must also set OSCTUNE<PLLEN> to start PLL!
-        #pragma config WDTPS    = 32768
-//      #pragma config WAIT     = OFF      	// Commented choices are
-//      #pragma config BW       = 16      	// only available on the
-//      #pragma config MODE     = MM      	// 80 pin devices in the 
-//      #pragma config EASHFT   = OFF      	// family.
-        #pragma config MSSPMSK  = MSK5
-//      #pragma config PMPMX    = DEFAULT
-//      #pragma config ECCPMX   = DEFAULT
-        #pragma config CCP2MX   = DEFAULT   
-
-#elif defined(PIC18F46J50_PIM) || defined(PIC18F_STARTER_KIT_1) || defined(PIC18F47J53_PIM)
-     #pragma config WDTEN = OFF          //WDT disabled (enabled by SWDTEN bit)
-     #pragma config PLLDIV = 3           //Divide by 3 (12 MHz oscillator input)
-     #pragma config STVREN = ON          //stack overflow/underflow reset enabled
-     #pragma config XINST = OFF          //Extended instruction set disabled
-     #pragma config CPUDIV = OSC1        //No CPU system clock divide
-     #pragma config CP0 = OFF            //Program memory is not code-protected
-     #pragma config OSC = HSPLL          //HS oscillator, PLL enabled, HSPLL used by USB
-     #pragma config FCMEN = OFF          //Fail-Safe Clock Monitor disabled
-     #pragma config IESO = OFF           //Two-Speed Start-up disabled
-     #pragma config WDTPS = 32768        //1:32768
-     #pragma config DSWDTOSC = INTOSCREF //DSWDT uses INTOSC/INTRC as clock
-     #pragma config RTCOSC = T1OSCREF    //RTCC uses T1OSC/T1CKI as clock
-     #pragma config DSBOREN = OFF        //Zero-Power BOR disabled in Deep Sleep
-     #pragma config DSWDTEN = OFF        //Disabled
-     #pragma config DSWDTPS = 8192       //1:8,192 (8.5 seconds)
-     #pragma config IOL1WAY = OFF        //IOLOCK bit can be set and cleared
-     #pragma config MSSP7B_EN = MSK7     //7 Bit address masking
-     #pragma config WPFP = PAGE_1        //Write Protect Program Flash Page 0
-     #pragma config WPEND = PAGE_0       //Start protection at page 0
-     #pragma config WPCFG = OFF          //Write/Erase last page protect Disabled
-     #pragma config WPDIS = OFF          //WPFP[5:0], WPEND, and WPCFG bits ignored 
-     #if defined(PIC18F47J53_PIM)
-        #pragma config CFGPLLEN = OFF
-     #else
-        #pragma config T1DIG = ON           //Sec Osc clock source may be selected
-        #pragma config LPT1OSC = OFF        //high power Timer1 mode
-     #endif
-#elif defined(LOW_PIN_COUNT_USB_DEVELOPMENT_KIT)
+#if defined(LOW_PIN_COUNT_USB_DEVELOPMENT_KIT)
         #pragma config CPUDIV = NOCLKDIV
         #pragma config USBDIV = OFF
         #pragma config FOSC   = HS
@@ -167,94 +78,34 @@
         #pragma config EBTR0  = OFF
         #pragma config EBTR1  = OFF
         #pragma config EBTRB  = OFF        
-
-#elif defined(EXPLORER_16)
-    #if defined(__PIC24FJ256GB110__)
-        _CONFIG1( JTAGEN_OFF & GCP_OFF & GWRP_OFF & FWDTEN_OFF & ICS_PGx2) 
-        _CONFIG2( PLL_96MHZ_ON & IESO_OFF & FCKSM_CSDCMD & OSCIOFNC_ON & POSCMOD_HS & FNOSC_PRIPLL & PLLDIV_DIV2 & IOL1WAY_ON)
-    #elif defined(PIC24FJ256GB210_PIM)
-        _CONFIG1(FWDTEN_OFF & ICS_PGx2 & GWRP_OFF & GCP_OFF & JTAGEN_OFF)
-        _CONFIG2(POSCMOD_HS & IOL1WAY_ON & OSCIOFNC_ON & FCKSM_CSDCMD & FNOSC_PRIPLL & PLL96MHZ_ON & PLLDIV_DIV2 & IESO_OFF)
-    #elif defined(__PIC24FJ64GB004__)
-        _CONFIG1(WDTPS_PS1 & FWPSA_PR32 & WINDIS_OFF & FWDTEN_OFF & ICS_PGx1 & GWRP_OFF & GCP_OFF & JTAGEN_OFF)
-        _CONFIG2(POSCMOD_HS & I2C1SEL_PRI & IOL1WAY_OFF & OSCIOFNC_ON & FCKSM_CSDCMD & FNOSC_PRIPLL & PLL96MHZ_ON & PLLDIV_DIV2 & IESO_ON)
-        _CONFIG3(WPFP_WPFP0 & SOSCSEL_SOSC & WUTSEL_LEG & WPDIS_WPDIS & WPCFG_WPCFGDIS & WPEND_WPENDMEM)
-        _CONFIG4(DSWDTPS_DSWDTPS3 & DSWDTOSC_LPRC & RTCOSC_SOSC & DSBOREN_OFF & DSWDTEN_OFF)
-    #elif defined(__32MX460F512L__) || defined(__32MX795F512L__)
-        #pragma config UPLLEN   = ON        // USB PLL Enabled
-        #pragma config FPLLMUL  = MUL_15        // PLL Multiplier
-        #pragma config UPLLIDIV = DIV_2         // USB PLL Input Divider
-        #pragma config FPLLIDIV = DIV_2         // PLL Input Divider
-        #pragma config FPLLODIV = DIV_1         // PLL Output Divider
-        #pragma config FPBDIV   = DIV_1         // Peripheral Clock divisor
-        #pragma config FWDTEN   = OFF           // Watchdog Timer
-        #pragma config WDTPS    = PS1           // Watchdog Timer Postscale
-        //#pragma config FCKSM    = CSDCMD        // Clock Switching & Fail Safe Clock Monitor
-        #pragma config OSCIOFNC = OFF           // CLKO Enable
-        #pragma config POSCMOD  = HS            // Primary Oscillator
-        #pragma config IESO     = OFF           // Internal/External Switch-over
-        #pragma config FSOSCEN  = OFF           // Secondary Oscillator Enable (KLO was off)
-        #pragma config FNOSC    = PRIPLL        // Oscillator Selection
-        #pragma config CP       = OFF           // Code Protect
-        #pragma config BWP      = OFF           // Boot Flash Write Protect
-        #pragma config PWP      = OFF           // Program Flash Write Protect
-        #pragma config ICESEL   = ICS_PGx2      // ICE/ICD Comm Channel Select
-        #pragma config DEBUG    = ON            // Background Debugger Enable
-    #elif defined(__dsPIC33EP512MU810__)||defined(__PIC24EP512GU810__)
-        _FOSCSEL(FNOSC_FRC);
-        _FOSC(FCKSM_CSECMD & OSCIOFNC_OFF & POSCMD_XT);
-        _FWDT(FWDTEN_OFF);
-    #else
-        #error No hardware board defined, see "HardwareProfile.h" and __FILE__
-    #endif
-#elif defined(PIC24F_STARTER_KIT)
-    _CONFIG1( JTAGEN_OFF & GCP_OFF & GWRP_OFF & COE_OFF & FWDTEN_OFF & ICS_PGx2) 
-    _CONFIG2( 0xF7FF & IESO_OFF & FCKSM_CSDCMD & OSCIOFNC_OFF & POSCMOD_HS & FNOSC_PRIPLL & PLLDIV_DIV3 & IOL1WAY_ON)
-#elif defined(PIC24FJ256DA210_DEV_BOARD)
-    _CONFIG1(FWDTEN_OFF & ICS_PGx2 & GWRP_OFF & GCP_OFF & JTAGEN_OFF)
-    _CONFIG2(POSCMOD_HS & IOL1WAY_ON & OSCIOFNC_ON & FCKSM_CSDCMD & FNOSC_PRIPLL & PLL96MHZ_ON & PLLDIV_DIV2 & IESO_OFF)
-#elif defined(PIC32_USB_STARTER_KIT)
-	//This covers both the PIC32 USB Starter Kit and the PIC32 USB Starter Kit II
-    #pragma config UPLLEN   = ON        // USB PLL Enabled
-    #pragma config FPLLMUL  = MUL_15        // PLL Multiplier
-    #pragma config UPLLIDIV = DIV_2         // USB PLL Input Divider
-    #pragma config FPLLIDIV = DIV_2         // PLL Input Divider
-    #pragma config FPLLODIV = DIV_1         // PLL Output Divider
-    #pragma config FPBDIV   = DIV_1         // Peripheral Clock divisor
-    #pragma config FWDTEN   = OFF           // Watchdog Timer
-    #pragma config WDTPS    = PS1           // Watchdog Timer Postscale
-    //#pragma config FCKSM    = CSDCMD        // Clock Switching & Fail Safe Clock Monitor
-    #pragma config OSCIOFNC = OFF           // CLKO Enable
-    #pragma config POSCMOD  = HS            // Primary Oscillator
-    #pragma config IESO     = OFF           // Internal/External Switch-over
-    #pragma config FSOSCEN  = OFF           // Secondary Oscillator Enable (KLO was off)
-    #pragma config FNOSC    = PRIPLL        // Oscillator Selection
-    #pragma config CP       = OFF           // Code Protect
-    #pragma config BWP      = OFF           // Boot Flash Write Protect
-    #pragma config PWP      = OFF           // Program Flash Write Protect
-    #pragma config ICESEL   = ICS_PGx2      // ICE/ICD Comm Channel Select
-    #pragma config DEBUG    = ON            // Background Debugger Enable
 #else
     #error No hardware board defined, see "HardwareProfile.h" and __FILE__
 #endif
 
-
-
 /** VARIABLES ******************************************************/
 #pragma udata
 #define MAXSIZE 64
+
 BYTE old_sw2,old_sw3;
-char buffer[8];
-unsigned char OutBuffer[8];
 USB_HANDLE lastINTransmission;
 USB_HANDLE lastOUTTransmission;
 BOOL Keyboard_out;
 BOOL BlinkStatusValid;
 DWORD CountdownTimerToShowUSBStatusOnLEDs;
+
+//Keyboard characters
+unsigned char keyLookup [] = {39, 30, 31, 32, 33, 34, 35, 36, 37, 38, 
+							   4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 
+							  14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 
+							  24, 25, 26, 27, 28, 29, 40, 44, 47, 48, 42};
+
+unsigned long _cardTempHigh;
+unsigned long _cardTemp;
+unsigned long _lastWiegand;
+char 		  _bitCount;
+unsigned long _sysTick;
+
 /** PRIVATE PROTOTYPES *********************************************/
-void BlinkUSBStatus(void);
-BOOL Switch2IsPressed(void);
-BOOL Switch3IsPressed(void);
 static void InitializeSystem(void);
 void ProcessIO(void);
 void UserInit(void);
@@ -262,19 +113,6 @@ void YourHighPriorityISRCode();
 void YourLowPriorityISRCode();
 void USBCBSendResume(void);
 void Keyboard(char *buff);
-
-//Keyboard characters
-unsigned char keyLookup [] = {39, 30, 31, 32, 33, 34, 35, 36, 37, 38, 
-							   4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 
-							  14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 
-							  24, 25, 26, 27, 28, 29, 40, 44, 47, 48};
-
-unsigned long _cardTemp;
-unsigned long _gotCard;
-unsigned long _lastWiegand;
-char 		  _bitCount;
-unsigned long _sysTick;
-
 void USBHIDCBSetReportComplete(void);
 
 /** VECTOR REMAPPING ***********************************************/
@@ -367,31 +205,42 @@ void USBHIDCBSetReportComplete(void);
 			mReloadTm0();
 			_sysTick ++;	
 		}
+
 		if (INTCONbits.INT0IE && INTCONbits.INT0IF)
 		{	
-			//Increament bit count
-			_bitCount++;
-			//left shift bit
-			_cardTemp <<= 1;
-			//Clear interrupt flag
-			mClrInt0F();
-			//Get the time of the bit received
-			_lastWiegand = _sysTick;
-			
+			_bitCount++;				// Increament bit count for Interrupt connected to D0
+			if (_bitCount>31)
+			{
+				_cardTempHigh |= ((0x80000000 & _cardTemp)>>31);
+				_cardTempHigh <<= 1;
+				_cardTemp <<=1;
+			}
+			else
+				_cardTemp <<= 1;		// D0 represent binary 0, so just left shift card data
+			_lastWiegand = _sysTick;	// Save time of the bit received
+			mClrInt0F();				// Clear interrupt 0 flag
 		}
+
 		if (INTCON3bits.INT2IE && INTCON3bits.INT2IF)
 		{	
-			_cardTemp |= 1;
-			_bitCount ++;
-			_cardTemp <<= 1;			
-			mClrInt2F();			
-			_lastWiegand = _sysTick;
-			mLED_4_On();	
+			mLED_4_On();
+			_bitCount ++;				// Increment bit count for Interrupt connected to D1
+			if (_bitCount>31)
+			{
+				_cardTempHigh |= ((0x80000000 & _cardTemp)>>31);
+				_cardTempHigh <<= 1;
+				_cardTemp |= 1;
+				_cardTemp <<=1;
+			}
+			else
+			{
+				_cardTemp |= 1;			// D1 represent binary 1, so OR card data with 1
+				_cardTemp <<= 1;		// Left shift card data
+			}
+			_lastWiegand = _sysTick;	// Save time the bit received
+			mClrInt2F();				// Clear interrupt 2 flag
 		}
-		//Check which interrupt flag caused the interrupt.
-		//Service the interrupt
-		//Clear the interrupt flag
-		//Etc.
+
         #if defined(USB_INTERRUPT)
 	        USBDeviceTasks();
         #endif
@@ -587,7 +436,7 @@ static void InitializeSystem(void)
     //Device switches over automatically to PLL output after PLL is locked and ready.
     #endif
 
-#if defined(__dsPIC33EP512MU810__)||defined(__PIC24EP512GU810__)
+	#if defined(__dsPIC33EP512MU810__)||defined(__PIC24EP512GU810__)
 
     // Configure the device PLL to obtain 60 MIPS operation. The crystal
     // frequency is 8MHz. Divide 8MHz by 2, multiply by 60 and divide by
@@ -691,29 +540,24 @@ void UserInit(void)
 {
 	_sysTick = 0;
 	_lastWiegand = 0;
+	_cardTempHigh = 0;
 	_cardTemp = 0;
 	_bitCount = 0;
-    //Initialize all of the LED pins
+
     mInitAllLEDs();
     mLED_2_On();
-	//Set input to digital
-	mClrAnsel();
-	//Initialise Wiegand pins
-	mTwiPinInit();
+	mClrAnsel();		//Set input to digital
+	mTwiPinInit();		//Initialise Wiegand pins
 	mTwiPinConf();
-	//Clear INT0 interrupt flag
-	mClrInt0F();
-	//Clear INT2 interrupt flag
-	mClrInt2F();
-	//Set Timer0
-	mTimer0Con();
+	mClrInt0F();		//Clear INT0 interrupt flag
+	mClrInt2F();		//Clear INT2 interrupt flag
+	mTimer0Con();		//Set Timer0
 	mClrTm0Init();
   	mReloadTm0();
-    //INTCONbits.TMR0IE = 1;
     mEnInt();   
+
     //initialize the variable holding the handle for the last
     // transmission
-
     lastINTransmission = 0;
     lastOUTTransmission = 0;
 
@@ -730,7 +574,7 @@ void UserInit(void)
  *
  * Side Effects:    None
  *
- * Overview:        Change ascii to keyboard input
+ * Overview:        Convert ascii to HID keyboard lookup code
  *
  * Note:            None
  *******************************************************************/
@@ -739,7 +583,6 @@ void CheckAscii (char *ch)
 	if ((*ch > 96) && (*ch < 123))
 	{
 		*ch -= 87;
-		
 	}
 	else if ((*ch > 48) && (*ch < 58))
 	{
@@ -766,6 +609,10 @@ void CheckAscii (char *ch)
 	{
 		*ch = 39;
 	}
+	else if (*ch == 8)
+	{
+		*ch = 40;
+	}
 	
 }//end CheckAscii
 
@@ -788,10 +635,10 @@ void SendChar (char *ch)
 {
 	CheckAscii (ch);
 	Keyboard(ch);
-}//end SendChar
+} //end SendChar
 
 /********************************************************************
- * Function:        unsigned long GetCardId (unsigned long code)
+ * Function:        unsigned long GetCardId (unsigned long *codehigh, unsigned long *code, char bitlength)
  *
  * PreCondition:    None
  *
@@ -801,19 +648,26 @@ void SendChar (char *ch)
  *
  * Side Effects:    None
  *
- * Overview:        Find card ID from 26 bit Wiegand
+ * Overview:        Find card ID from Wiegand 26 or 34 data 
  *
  * Note:            None
  *******************************************************************/
-unsigned long GetCardId (unsigned long code)
+unsigned long GetCardId (unsigned long *codehigh, unsigned long *code, char bitlength)
 {
-	unsigned long cardId;
+	unsigned long cardId=0;
 
-	cardId = code & 0x1FFFF;
-	cardId = cardId >> 1;		
+	if (bitlength==26)								// EM tag
+		cardId = (*code & 0x1FFFFFE) >>1;
 
+	if (bitlength==34)								// Mifare 
+	{
+		*codehigh = *codehigh & 0x03;				// only need the 2 LSB of the codehigh
+		*codehigh <<= 30;							// shift 2 LSB to MSB		
+		*code >>=1;
+		cardId = *codehigh | *code;
+	}
 	return cardId;
-}//end GetCardId
+} //end GetCardId
 
 /********************************************************************
  * Function:        unsigned long GetFc (unsigned long code)
@@ -830,6 +684,7 @@ unsigned long GetCardId (unsigned long code)
  *
  * Note:            None
  *******************************************************************/
+/*
 unsigned long GetFc (unsigned long code)
 {
 	unsigned long fc;
@@ -848,6 +703,7 @@ unsigned long GetFc (unsigned long code)
 
 	return fc;
 }//end GetFc
+*/
 
 /********************************************************************
  * Function:        void DoWiegandCoversion (void)
@@ -869,84 +725,100 @@ unsigned long GetFc (unsigned long code)
 void DoWiegandCoversion (void)
 {
 	char buff[MAXSIZE], i;
-	char hd [] = "0x";
-	char len = strlen (hd);
-	char *c;
-	unsigned long  cardId, fc;
-	if (((_bitCount) && (_sysTick - _lastWiegand) > 50))
-	{
-		//Make sure we get at least 26 bit Wiegand
-		if (_bitCount > 25)
-		{
-			_gotCard = _cardTemp;
-			//ignore the end bit
-			_gotCard = _gotCard >> 1;
-			
-		}
-		_cardTemp = 0;	
-		_bitCount = 0;		
-	}
-
-	if (_gotCard)
-	{
-		cardId = GetCardId (_gotCard);
-		fc = GetFc (_gotCard);		
-		for (i = 0; i < len; i++)
-		{
-			SendChar (hd +i);
-		}
-		memset (buff, 0, MAXSIZE);
-
-		for (i = 0; i < 7;)
-		{
-			buff[i] =   (_gotCard & 0x0f);
-			buff[i+1] = (_gotCard >> 4) & 0x0f;
-			_gotCard >>= 8;
-			i += 2;
-		}
-
-		for (i = 7; i > -1; i --)
-		{	
-    		Keyboard(buff + i);
-		}
-
-
-		*buff = ' ';		// space
-		SendChar (buff);
-		
-		*buff = '[';		// space
-		SendChar (buff);
-
-		//break code down to dec
-		buff[2] = fc / 100;
-		buff[1] = fc % 100;
-		buff[1] = buff[1] / 10;
-		buff[0] = fc%10;
-		for (i = 2; i > -1; i --)
-		{	
-    		Keyboard(buff + i);
-		}
-		*buff = ']';		// space
-		SendChar (buff);
-
-		*buff = ' ';		// space
-		SendChar (buff);
-
-		//cardId= 12345;
-		for (i = 5; i >= 0; i --)
-		{
-			buff[i] = cardId % 10;
-			cardId /= 10;
-		}
-
-		for (i = 0; i < 6; i ++)
-		{
-			Keyboard(buff + i);
-		}
-		*buff = '\r';		// space
-		SendChar (buff);
-		_gotCard = 0;
+	char tempbitCount;
+//	char hd [] = "0x";
+//	char len = 2;
+	unsigned long cardId;
 	
+	if ((_sysTick - _lastWiegand) > 25)		// if no more signal coming through after 25ms
+	{
+		if ((_bitCount==26) || (_bitCount==34) || (_bitCount==8)) 			// bitCount for keypress=8, Wiegand 26=26, Wiegand 34=34
+		{
+			_cardTemp >>= 1;		// shift right 1 bit to get back the real value - interrupt done 1 left shift in advance
+			if (_bitCount>32)
+				_cardTempHigh >>= 1;
+
+			if((_bitCount==26) || (_bitCount==34))
+			{
+				cardId = GetCardId (&_cardTempHigh, &_cardTemp, _bitCount);
+				//cardId=_cardTemp;
+				tempbitCount=_bitCount;
+				_bitCount=0;
+				_cardTemp=0;
+				_cardTempHigh=0;
+/*				// If need to display with leading 0x for the hex data
+				for (i = 0; i < len; i++)
+				{
+					SendChar (hd +i);
+				}
+*/
+				memset (buff, 0, MAXSIZE);
+
+				for (i = 0; i < 7;)
+				{
+					buff[i] =   (cardId & 0x0f);
+					buff[i+1] = (cardId >> 4) & 0x0f;
+					cardId >>= 8;
+					i += 2;
+				}
+				
+				if(tempbitCount==26)
+				{
+					for (i = 7; i > -1; i --)
+					{	
+    					Keyboard(buff + i);
+					}
+				}
+				else
+				{
+					for (i=0; i<8; i+=2)
+					{
+						Keyboard(buff + i +1);
+						Keyboard(buff + i);
+					}
+				
+				}
+
+				*buff = '\r';		// enter
+				SendChar (buff);
+			}
+			else if (_bitCount==8)
+			{
+				// 8-bit Wiegand keyboard data, high nibble is the NOT of low nibble
+				// eg if key 1 pressed, data=E1 in binary 11100001 , high nibble=1110 , low nibble = 0001 
+				char highNibble = (_cardTemp & 0xf0) >>4;
+				char lowNibble = (_cardTemp & 0x0f);
+				_bitCount=0;
+				_cardTemp=0;
+				_cardTempHigh=0;
+				
+				if (lowNibble == (~highNibble & 0x0f))		// check if low nibble matches the NOT of high nibble.
+				{
+					if (lowNibble==0x0b)					
+					{
+						// Wiegand keypad ENT
+						*buff = '\r';			// set as enter 
+						SendChar(buff);
+					}
+					else if (lowNibble==0x0a)
+					{
+						// Wiegand keypad ESC
+						*buff = 0x08;			// set as backspace
+						SendChar(buff);
+					}
+					else				
+						Keyboard(&lowNibble);		// else process Wiegand keypad 0-9 
+				}
+			}
+		}
+		else
+		{
+			// well time over 25 ms and bitCount !=8 , !=26, !=34 , must be noise then
+			_lastWiegand=_sysTick;
+			_bitCount=0;			
+			_cardTemp=0;
+			_cardTempHigh=0;
+		}	
 	}
 }//end DoWiegandCoversion
 
@@ -970,7 +842,8 @@ void DoWiegandCoversion (void)
 void ProcessIO(void)
 {   
 	DoWiegandCoversion ();
-    // User Application USB tasks
+    
+	// User Application USB tasks
     if((USBDeviceState < CONFIGURED_STATE)||(USBSuspendControl==1)) return;  
      
 }//end ProcessIO
@@ -993,8 +866,6 @@ void ProcessIO(void)
  *******************************************************************/
 void Keyboard(char *buff)
 {
-	
-	//CheckAscii (buff);
 	//Load the HID buffer
 	hid_report_in[0] = 0;
 	hid_report_in[1] = 0;
@@ -1025,153 +896,6 @@ void Keyboard(char *buff)
 	while (HIDTxHandleBusy(lastINTransmission));
     
 }//end keyboard()
-
-
-
-/******************************************************************************
- * Function:        BOOL Switch2IsPressed(void)
- *
- * PreCondition:    None
- *
- * Input:           None
- *
- * Output:          TRUE - pressed, FALSE - not pressed
- *
- * Side Effects:    None
- *
- * Overview:        Indicates if the switch is pressed.  
- *
- * Note:            
- *
- *****************************************************************************/
-BOOL Switch2IsPressed(void)
-{
-    if(sw2 != old_sw2)
-    {
-        old_sw2 = sw2;                  // Save new value
-        if(sw2 == 0)                    // If pressed
-            return TRUE;                // Was pressed
-    }//end if
-    return FALSE;                       // Was not pressed
-}//end Switch2IsPressed
-
-/******************************************************************************
- * Function:        BOOL Switch3IsPressed(void)
- *
- * PreCondition:    None
- *
- * Input:           None
- *
- * Output:          TRUE - pressed, FALSE - not pressed
- *
- * Side Effects:    None
- *
- * Overview:        Indicates if the switch is pressed.  
- *
- * Note:            
- *
- *****************************************************************************/
-BOOL Switch3IsPressed(void)
-{
-    if(sw3 != old_sw3)
-    {
-        old_sw3 = sw3;                  // Save new value
-        if(sw3 == 0)                    // If pressed
-            return TRUE;                // Was pressed
-    }//end if
-    return FALSE;                       // Was not pressed
-}//end Switch3IsPressed
-
-/********************************************************************
- * Function:        void BlinkUSBStatus(void)
- *
- * PreCondition:    None
- *
- * Input:           None
- *
- * Output:          None
- *
- * Side Effects:    None
- *
- * Overview:        BlinkUSBStatus turns on and off LEDs 
- *                  corresponding to the USB device state.
- *
- * Note:            mLED macros can be found in HardwareProfile.h
- *                  USBDeviceState is declared and updated in
- *                  usb_device.c.
- *******************************************************************/
-void BlinkUSBStatus(void)
-{
-    static WORD led_count=0;
-    
-    if(led_count == 0)led_count = 10000U;
-    led_count--;
-
-    #define mLED_Both_Off()         {mLED_1_Off();mLED_2_Off();}
-    #define mLED_Both_On()          {mLED_1_On();mLED_2_On();}
-    #define mLED_Only_1_On()        {mLED_1_On();mLED_2_Off();}
-    #define mLED_Only_2_On()        {mLED_1_Off();mLED_2_On();}
-
-    if(USBSuspendControl == 1)
-    {
-        if(led_count==0)
-        {
-            mLED_1_Toggle();
-            if(mGetLED_1())
-            {
-                mLED_2_On();
-            }
-            else
-            {
-                mLED_2_Off();
-            }
-        }//end if
-    }
-    else
-    {
-        if(USBDeviceState == DETACHED_STATE)
-        {
-            mLED_Both_Off();
-        }
-        else if(USBDeviceState == ATTACHED_STATE)
-        {
-            mLED_Both_On();
-        }
-        else if(USBDeviceState == POWERED_STATE)
-        {
-            mLED_Only_1_On();
-        }
-        else if(USBDeviceState == DEFAULT_STATE)
-        {
-            mLED_Only_2_On();
-        }
-        else if(USBDeviceState == ADDRESS_STATE)
-        {
-            if(led_count == 0)
-            {
-                mLED_1_Toggle();
-                mLED_2_Off();
-            }//end if
-        }
-        else if(USBDeviceState == CONFIGURED_STATE)
-        {
-            if(led_count==0)
-            {
-                mLED_1_Toggle();
-                if(mGetLED_1())
-                {
-                    mLED_2_Off();
-                }
-                else
-                {
-                    mLED_2_On();
-                }
-            }//end if
-        }
-    }
-
-}//end BlinkUSBStatus
-
 
 
 
@@ -1725,4 +1449,3 @@ void USBHIDCBSetReportComplete(void)
 	CountdownTimerToShowUSBStatusOnLEDs = 140000; 
 }	
 /** EOF Keyboard.c **********************************************/
-#endif
